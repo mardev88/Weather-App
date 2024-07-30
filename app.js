@@ -76,10 +76,28 @@ function formatDate(dateString) {
 function fromGroupedForecastsToCard(date, forecasts) {
   return `
     <div class="day-container">
-      <h3>${formatDate(date)}</h3>
+     <div><h3>${formatDate(date)}</h3></div>
       <div class="forecast-cards">
         ${forecasts.map((forecast) => fromForecastsToCard(forecast)).join("")}
       </div>
+    </div>
+  `;
+}
+
+function fromForecastsToCard(forecast) {
+  const iconCode = forecast.weather[0].icon;
+  const iconImageUrl = `http://openweathermap.org/img/w/${iconCode}.png`;
+  const dateTime = forecast.dt_txt;
+  const hour = new Date(dateTime).getHours();
+  const temperature = forecast.main.temp;
+  const description = forecast.weather[0].description;
+
+  return `
+    <div class="forecast-card">
+      <img src="${iconImageUrl}">
+      <p>Ora: ${hour}:00</p>
+      <p>Temperatura: ${temperature}°C</p>
+      <p>Descriere: ${description}</p>
     </div>
   `;
 }

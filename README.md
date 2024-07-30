@@ -10,12 +10,16 @@ This Weather App allows users to view the current weather and a 5-day forecast f
 ## Installation
 
 1. Clone the repository:
+
    ```sh
    git clone https://github.com/yourusername/weather-app.git
+
+   ```
 
 2. Navigate to the project directory:
    ```sh
    cd weather-app
+   ```
 
 ## Usage
 
@@ -30,24 +34,31 @@ This app uses the OpenWeatherMap API to fetch weather data. You will need an API
 ## Code Overview
 
 ## `showWeather` Function
+
 Fetches and displays the current weather for a specified city.
 
 ## `showForecast` Function
+
 Fetches and displays the 5-day weather forecast for a specified city.
 
 ## `getForecasts` Function
+
 Retrieves forecast data from the OpenWeatherMap API.
 
 ## `groupForecastsByDate` Function
+
 Groups forecast data by date.
 
 ## `showForecastInContainer` Function
+
 Renders grouped forecast data into HTML.
 
 ## `fromGroupedForecastsToCard` Function
+
 Generates HTML for grouped forecasts.
 
 ## `fromForecastsToCard` Function
+
 Generates HTML for individual forecast cards.
 
 ## Contributing
@@ -62,4 +73,5 @@ Generates HTML for individual forecast cards.
 ## Acknowledgements
 
 OpenWeatherMap for providing the weather API.
+
 All contributors and maintainers of this project.
