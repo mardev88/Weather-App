@@ -62,3 +62,24 @@ function groupForecastsByDate(forecasts) {
     return acc;
   }, {});
 }
+function showForecastInContainer(groupedForecasts, forecastContainer) {
+  forecastContainer.innerHTML = Object.keys(groupedForecasts)
+    .map((date) => fromGroupedForecastsToCard(date, groupedForecasts[date]))
+    .join("");
+}
+
+function formatDate(dateString) {
+  const [year, month, day] = dateString.split("-");
+  return `${day}-${month}-${year}`;
+}
+
+function fromGroupedForecastsToCard(date, forecasts) {
+  return `
+    <div class="day-container">
+      <h3>${formatDate(date)}</h3>
+      <div class="forecast-cards">
+        ${forecasts.map((forecast) => fromForecastsToCard(forecast)).join("")}
+      </div>
+    </div>
+  `;
+}
