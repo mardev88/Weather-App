@@ -33,3 +33,32 @@ async function showWeather() {
       </div>
    `;
 }
+async function showForecast() {
+  const forecasts = await getForecasts();
+
+  const sortedForecasts = forecasts.list.sort((a, b) => {
+    return new Date(a.dt_txt) - new Date(b.dt_txt);
+  });
+
+  const groupedForecasts = groupForecastsByDate(sortedForecasts);
+
+  showForecastInContainer(groupedForecasts, forecastContainer);
+}
+
+async function getForecasts() {
+  const city = cityInput.value;
+  const response = await fetch(`${URL_FORECAST_WEATHER}${city}`);
+  const forecasts = await response.json();
+  return forecasts;
+}
+
+function groupForecastsByDate(forecasts) {
+  return forecasts.reduce((acc, forecast) => {
+    const date = forecast.dt_txt.split(" ")[0];
+    if (!acc[date]) {
+      acc[date] = [];
+    }
+    acc[date].push(forecast);
+    return acc;
+  }, {});
+}
